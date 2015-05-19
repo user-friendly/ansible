@@ -1,0 +1,11 @@
+---
+# TODO Check these contribs: https://github.com/mivok/ansible-hosts, https://github.com/weareinteractive/ansible-hosts
+
+- name: adding dev VMs host entries to all hosts
+  hosts: all
+  sudo: yes
+  roles:
+    - hosts
+  vars:
+    hosts:
+      - { ip: '192.168.2.199', domain: 'pivanov.vm99' }

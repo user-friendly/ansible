@@ -2,7 +2,7 @@
 # This is an example playbook.
 
 - name: this is an example play
-  hosts: all
+  hosts: dev-vms
 # Inventory level setting ansible_ssh_user seems to overwrite remote_user.
 #  remote_user: darko
 # Run all tasks using sudo
@@ -10,8 +10,13 @@
 # as the given user.
 #  sudo_user: www-data
 #
-#  roles:
-#  - example
+  roles:
+    - hosts
+
+  vars:
+    hosts:
+      - { ip: '192.168.2.199', domain: 'pivanov.vm99' }
+
   tasks:
 
   - name: whoami
