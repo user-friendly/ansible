@@ -14,12 +14,11 @@ vms
 
 # This is where Ansible lives.
 [puppet-master]
-debian-sid-vm1              ansible_connection=local
-# aka pivanov.vm1
+debian-sid.vbox.com              ansible_ssh_host=192.168.2.100  ansible_connection=local
 
 [dev-vms]
-ubuntu-tahr-vm2             # aka pivanov.vm2
-ubuntu-vervet-vm3           # aka pivanov.vm3
+ubuntu-tahr.vbox.com             ansible_ssh_host=192.168.2.101
+ubuntu-vervet.vbox.com           ansible_ssh_host=192.168.2.102
 
 [vms:children]
 dev-vms

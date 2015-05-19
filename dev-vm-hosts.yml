@@ -2,10 +2,17 @@
 # TODO Check these contribs: https://github.com/mivok/ansible-hosts, https://github.com/weareinteractive/ansible-hosts
 
 - name: adding dev VMs host entries to all hosts
-  hosts: all
+  hosts: puppet-master:dev-vms
   sudo: yes
   roles:
-    - hosts
+#    - hostname
+#    - hosts
+    - { role: reboot, when:  }
   vars:
     hosts:
-      - { ip: '192.168.2.199', domain: 'pivanov.vm99' }
+      - { ip: '192.168.2.100', domain: 'dev-1.pivanov.vm' }
+      - { ip: '192.168.2.101', domain: 'dev-2.pivanov.vm' }
+      - { ip: '192.168.2.102', domain: 'dev-3.pivanov.vm' }
+      - { ip: '192.168.2.100', domain: 'debian-sid.vbox.com' }
+      - { ip: '192.168.2.101', domain: 'ubuntu-tahr.vbox.com' }
+      - { ip: '192.168.2.102', domain: 'ubuntu-vervet.vbox.com' }

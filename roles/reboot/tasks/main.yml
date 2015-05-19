@@ -1,0 +1,20 @@
+---
+# Basic reboot role.
+# https://support.ansible.com/hc/en-us/articles/201958037-Reboot-a-server-and-wait-for-it-to-come-back
+
+- name: restart machine
+  sudo: yes
+  command: shutdown -r now "Ansible updates triggered."
+  async: 0
+  poll: 0
+  ignore_errors: true
+
+- name: waiting for server to come back
+  sudo: false
+  # Run task on the local control node (machine executing the playbook).
+  local_action: wait_for
+                host={{ inventory_hostname }}
+                port=22
+                delay=10
+                timeout=300
+                state=started
