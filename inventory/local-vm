@@ -21,10 +21,9 @@ debian-sid-vm1              ansible_connection=local
 ubuntu-tahr-vm2             # aka pivanov.vm2
 ubuntu-vervet-vm3           # aka pivanov.vm3
 
-[vms]
-debian-sid-vm1               ansible_connection=local
-ubuntu-tahr-vm2
-ubuntu-vervet-vm3
+[vms:children]
+dev-vms
+puppet-master
 
 # Overwrite the ssh user per group:
 # [dev-slices:vars]
