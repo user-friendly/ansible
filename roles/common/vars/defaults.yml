@@ -1,0 +1,8 @@
+---
+# Default variables for the common role.
+
+# Admin user, should have sudo access.
+admin_user: pivanov
+
+# Workspace directory name
+workspace_dir: workspace

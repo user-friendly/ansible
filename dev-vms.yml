@@ -1,0 +1,14 @@
+---
+# Setup development machines.
+
+- name: setup development machines
+  hosts: dev-vms
+# Inventory level setting ansible_ssh_user seems to overwrite remote_user.
+#  remote_user: darko
+# Run all tasks using sudo
+  sudo: yes
+# as the given user.
+#  sudo_user: www-data
+#
+  roles:
+    - common
