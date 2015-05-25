@@ -12,3 +12,12 @@
 #
   roles:
     - common
+
+# Example of some Jinja2 filters.
+#  vars:
+#    - var: "\"'`"
+#  tasks:
+#    - name: replace test
+#      shell: "/bin/echo {{ var|regex_replace('[\"\\'`]', 'q') }}"
+#      register: res
+#      changed_when: (res.rc == 0 and res.stdout|search("q")) != true
