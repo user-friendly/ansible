@@ -5,7 +5,7 @@
 
 - include_vars: "defaults.yml"
 
-#- include: packages-apt.yml
+- include: packages-apt.yml
 - include: home.yml
 
 #- name: setup admin user
