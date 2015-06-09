@@ -1,6 +1,6 @@
 ---
 
-- name: Adding hosts entries
+- name: add hosts entries
   lineinfile: >
     state=present
     dest=/etc/hosts

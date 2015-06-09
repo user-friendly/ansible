@@ -1,7 +1,7 @@
 ---
 # Setup development machines.
 
-- name: setup development machines
+- name: setup development environments
   hosts: dev-vms
 # Inventory level setting ansible_ssh_user seems to overwrite remote_user.
 #  remote_user: darko
@@ -12,6 +12,7 @@
 #
   roles:
     - common
+    - nginx
 
 # Example of some Jinja2 filters.
 #  vars:

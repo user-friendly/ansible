@@ -1,7 +1,7 @@
 ---
 # Install common packages.
 
-- name: install base packages
+- name: base packages
   apt: name={{ item }}
        state=present
        install_recommends=no
@@ -11,15 +11,29 @@
     - htop
     - ispell
     - git
+  tags:
+    - common
+    - packages
+    - apt
 
 # First install the emacs*-nox version so the later emacs
 # package doesn't drag in the whole X system.
-- name: install emacs nox
+- name: emacs nox
   apt: name=emacs24-nox
        state=present
+  tags:
+    - common
+    - packages
+    - apt
+    - emacs
 
-- name: install emacs commons
+- name: emacs commons
   apt: name={{ item }}
   with_items:
     - emacs
     - emacs-goodies-el
+  tags:
+    - common
+    - packages
+    - apt
+    - emacs

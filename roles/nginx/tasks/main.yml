@@ -1,0 +1,15 @@
+---
+# Role installs web server nginx.
+
+# Install the latest nginx default pacakge.
+# By default, most debain like distros will use the
+- name: nginx present
+  apt: name={{ item }}
+       state=present
+       install_recommends=no
+  with_items:
+    - nginx
+  tags:
+    - packages
+    - nginx
+

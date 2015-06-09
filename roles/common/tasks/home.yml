@@ -1,18 +1,26 @@
 ---
 # Setup admin user's home directory.
 
-- name: create workspace directory
+- name: workspace directory present
   sudo_user: "{{ admin_user }}"
   file: path=/home/{{ admin_user }}/{{ workspace_dir }}
         state=directory
+  tags:
+    - common
+    - shell
+    - admin
 
-- name: get helper shell scripts
+- name: helper shell scripts present
   sudo_user: "{{ admin_user }}"
   git: repo=https://github.com/user-friendly/sh-home.git
        dest=/home/{{ admin_user }}/{{ workspace_dir }}/sh-home
        version=master
        remote=origin
        accept_hostkey=yes
+  tags:
+    - common
+    - shell
+    - admin
 
 - name: install helper shell scripts
   sudo_user: "{{ admin_user }}"
@@ -22,6 +30,10 @@
   # TODO Figure out a Jinja2 regex magic to capture and compare "make: Nothing to be done for ".
   # Apparently, some versions of make quote the target in the message differently (not using single quote).
   changed_when: true != (make_result.rc == 0 and make_result.stdout|search("Nothing to be done for"))
+  tags:
+    - common
+    - shell
+    - admin
 
 - name: enable helper shell scripts
   sudo_user: "{{ admin_user }}"
@@ -29,3 +41,7 @@
            chdir=/home/{{ admin_user }}/{{ workspace_dir }}/sh-home
   register: make_result
   changed_when: true != (make_result.rc == 0 and make_result.stdout == "Shell scripts enabled.")
+  tags:
+    - common
+    - shell
+    - admin

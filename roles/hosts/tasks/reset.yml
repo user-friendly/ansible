@@ -1,6 +1,6 @@
 ---
 
-- name: Removing old entries
+- name: remove old entries
   lineinfile: >
     state=absent
     dest=/etc/hosts
