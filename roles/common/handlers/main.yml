@@ -1,0 +1,19 @@
+---
+# Start nginx.
+- name: nginx start
+  service: name=nginx state=started
+
+# Stop nginx.
+- name: nginx stop
+  service: name=nginx state=stopped
+
+# Restart nginx.
+- name: nginx restart
+  service: name=nginx state=restarted
+
+# Reload nginx.
+# When configurations changed and can be applied. Note that
+# if there's a syntax error in the config files, nginx will
+# continue working with the old configuration.
+- name: nginx reload
+  service: name=nginx state=reloaded

@@ -9,7 +9,8 @@
        install_recommends=no
   with_items:
     - nginx
+  notify:
+    - nginx start
   tags:
     - packages
     - nginx
-
