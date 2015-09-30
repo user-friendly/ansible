@@ -1,0 +1,48 @@
+---
+#
+# C/C++ development environment
+#
+
+- name: compilers
+  apt: name={{ item }}
+       state={{ package_state }}
+       install_recommends=no
+  with_itmes:
+    - binutils
+    - gcc
+    - g++
+    - clang
+  tags:
+    - cpp
+    - packages
+    - apt
+    - compiler
+
+- name: autotools
+  apt: name={{ item }}
+       state={{ package_state }}
+       install_recommends=no
+  with_items:
+    - make
+    - automake
+    - autoconf
+  tags:
+    - cpp
+    - packages
+    - apt
+    - autotools
+
+- name: support packages
+  apt: name={{ item }}
+       state={{ package_state }}
+       install_recommends=no
+  with_items:
+    - gdb
+    - git
+    - emacs24-nox
+    - perf
+  tags:
+    - cpp
+    - packages
+    - apt
+    - support

@@ -1,8 +1,8 @@
 ---
-# Setup development machines.
+# Setup development machines for web.
 
 - name: setup development environments
-  hosts: dev-vms
+  hosts: dev-vms-web
 # Inventory level setting ansible_ssh_user seems to overwrite remote_user.
 #  remote_user: darko
 # Run all tasks using sudo

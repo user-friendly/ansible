@@ -1,7 +1,7 @@
 ---
 # TODO Check these contribs: https://github.com/mivok/ansible-hosts, https://github.com/weareinteractive/ansible-hosts
 - name: adding dev VMs host entries to all hosts
-  hosts: puppet-master:dev-vms
+  hosts: ansible:dev-vms-web
   sudo: yes
   roles:
     - { role: hostname, when: apply_hostname }

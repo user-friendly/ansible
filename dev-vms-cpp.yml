@@ -1,0 +1,24 @@
+---
+# Setup development machines for cpp.
+
+- name: setup development environments
+  hosts: dev-vms-cpp
+# Inventory level setting ansible_ssh_user seems to overwrite remote_user.
+#  remote_user: darko
+# Run all tasks using sudo
+  sudo: yes
+# as the given user.
+#  sudo_user: www-data
+#
+  roles:
+    - common
+    - cpp
+
+# Example of some Jinja2 filters.
+#  vars:
+#    - var: "\"'`"
+#  tasks:
+#    - name: replace test
+#      shell: "/bin/echo {{ var|regex_replace('[\"\\'`]', 'q') }}"
+#      register: res
+#      changed_when: (res.rc == 0 and res.stdout|search("q")) != true

@@ -4,25 +4,32 @@
 #
 [localhost]
 127.0.0.1                  ansible_connection=local
-#::1                         ansible_connection=local
+::1                        ansible_connection=local
 
 # Local hosts (including VMs).
 [local:children]
-puppet-master
+ansible
 dev-vms
 vms
 
-# This is where Ansible lives.
-[puppet-master]
+# Main node from which Ansible playbooks will be ran.
+[ansible]
 debian-sid.vbox.com              ansible_ssh_host=192.168.10.100  ansible_connection=local
-
-[dev-vms]
-ubuntu-tahr.vbox.com             ansible_ssh_host=192.168.10.101
-ubuntu-vervet.vbox.com           ansible_ssh_host=192.168.10.102
 
 [vms:children]
 dev-vms
-puppet-master
+ansible
+
+[dev-vms:children]
+dev-vms-web
+dev-vms-cpp
+
+[dev-vms-web]
+ubuntu-tahr.vbox.com             ansible_ssh_host=192.168.10.101
+ubuntu-vervet.vbox.com           ansible_ssh_host=192.168.10.102
+
+[dev-vms-cpp]
+debian-8.vbox.com                ansible_ssh_host=192.168.10.103
 
 # Overwrite the ssh user per group:
 # [dev-slices:vars]

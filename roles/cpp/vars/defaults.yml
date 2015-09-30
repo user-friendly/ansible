@@ -1,0 +1,8 @@
+---
+# Default variables for the cpp role.
+
+# Admin user, should have sudo access.
+#admin_user: pivanov
+
+# Package state for all packages being managed by this role.
+package_state=present
