@@ -17,3 +17,7 @@
 # continue working with the old configuration.
 - name: nginx reload
   service: name=nginx state=reloaded
+
+# Restart samba.
+- name: samba restart
+  service: name=smbd state=restarted

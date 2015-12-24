@@ -1,0 +1,11 @@
+---
+# Default variables for the common role.
+# These variables will be added to the play.
+# See http://docs.ansible.com/ansible/playbooks_roles.html#roles.
+
+# Workspace directory name
+workspace_dir: workspace
+
+# Applications directory.
+apps_path: /opt/apps
+apps_path_root: /apps

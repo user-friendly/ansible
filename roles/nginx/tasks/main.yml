@@ -1,9 +1,10 @@
 ---
 # Role installs web server nginx.
 
-# Install the latest nginx default pacakge.
-# By default, most debain like distros will use the
-- name: nginx present
+# Install light version of nginx.
+# Debian like distros seem to have this one.
+
+- name: nginx-light present
   apt: name={{ item }}
        state=present
        install_recommends=no

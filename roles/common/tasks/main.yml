@@ -3,10 +3,9 @@
 # Common setup tasks across all servers.
 #
 
-- include_vars: "defaults.yml"
-
 - include: packages-apt.yml
 - include: home.yml
+- include: apps.yml
 
 #- name: setup admin user
 #  user:

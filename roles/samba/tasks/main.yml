@@ -1,0 +1,52 @@
+---
+# Role installs samba server.
+
+# Install the latest samba default pacakge.
+- name: samba present
+  apt: name={{ item }}
+       state=present
+       install_recommends=no
+  with_items:
+    - samba
+  notify:
+    - samba start
+  tags:
+    - packages
+    - samba
+
+- name: samba set pass
+  shell: printf "%s\n%s" "{{ samba_pass }}" "{{ samba_pass }}" | smbpasswd -s -a {{ dev_user }}
+  when: samba_pass is defined
+  tags:
+    - config
+    - samba
+
+# Oh, no, no, no, we shall have none of that.
+- name: samba config disable passwd sync
+  replace: dest={{ samba_config_file }}
+    regexp="^(\s*)unix password sync\s*=\s*yes"
+    replace="\1unix password sync = no"
+  tags:
+    - config
+    - samba
+
+# @todo Maybe restart smbd?
+
+# Assuming the apps directory was setup.
+- name: samba config file
+  template: src=smb.apps.conf.j2
+    dest={{ samba_config_path }}/smb.apps.conf
+  tags:
+    - config
+    - samba
+
+- name: samba config include
+  lineinfile: dest={{ samba_config_file }}
+    line="include = {{ samba_config_path }}/smb.apps.conf\n"
+    state=present
+    insertafter=EOF
+  notify:
+    - samba restart
+  tags:
+      - config
+      - samba

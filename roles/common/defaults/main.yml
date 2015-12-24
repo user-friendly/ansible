@@ -1,0 +1,4 @@
+---
+# Default variables for this role.
+# Variables in this file have the lowest priority.
+# See http://docs.ansible.com/ansible/playbooks_roles.html#role-default-variables.

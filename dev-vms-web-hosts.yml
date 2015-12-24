@@ -13,6 +13,7 @@
   vars:
     apply_hostname: false
     reboot_hosts: true
+    hosts_reset: true
     hosts:
       - { ip: '192.168.10.100', domain: 'dev-1.pivanov.vm' }
       - { ip: '192.168.10.101', domain: 'dev-2.pivanov.vm' }

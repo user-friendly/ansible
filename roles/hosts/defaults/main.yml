@@ -7,3 +7,6 @@
 
 # list of /etc/hosts entries
 hosts: []
+
+# Whether to remove hosts before adding or not.
+hosts_reset: false

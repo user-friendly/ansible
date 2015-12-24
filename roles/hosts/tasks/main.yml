@@ -1,4 +1,8 @@
 ---
 
+- include_vars: '../defaults/main.yml'
+
 - include: reset.yml
+  when: hosts_reset
+
 - include: add.yml

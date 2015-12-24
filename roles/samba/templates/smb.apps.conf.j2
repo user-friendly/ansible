@@ -1,0 +1,27 @@
+#
+# Share the apps directory.
+#
+[apps]
+    comment = "Applications"
+    path = {{ apps_path }}
+    browseable = yes
+    guest ok = no
+    writable = yes
+    create mask = 0644
+    directory mask = 0755
+    valid users = {{ dev_user }}
+
+#
+# Override some commonly setup folders by the main config file.
+# @todo Maybe move them to another conf file?
+#
+[printers]
+   browseable = no
+   printable = no
+   guest ok = no
+   read only = yes
+[print$]
+   browseable = no
+   printable = no
+   read only = yes
+   guest ok = no

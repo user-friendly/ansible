@@ -1,0 +1,21 @@
+---
+# Setup applications directory.
+
+# @todo What was that "s" mode? Inherit mode something?
+- name: apps directory present
+  file: path={{ apps_path }}
+        state=directory
+        owner={{ dev_user }}
+        group={{ dev_group }}
+        mode="ug+rwx"
+  tags:
+    - common
+    - apps
+
+- name: apps root link
+  file: src={{ apps_path }}
+        dest={{ apps_path_root }}
+        state=link
+  tags:
+    - common
+    - apps

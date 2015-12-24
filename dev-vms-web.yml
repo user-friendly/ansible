@@ -12,6 +12,7 @@
 #
   roles:
     - common
+    - samba
     - nginx
 
 # Example of some Jinja2 filters.
@@ -22,3 +23,13 @@
 #      shell: "/bin/echo {{ var|regex_replace('[\"\\'`]', 'q') }}"
 #      register: res
 #      changed_when: (res.rc == 0 and res.stdout|search("q")) != true
+
+# @fixme Since prompts are not allowed in roles, create a special play for pass.
+#  vars_prompt:
+#  - name: samba_pass
+#    prompt: "samba dev user password"
+#    private: yes
+#    confirm: yes
+#    tags:
+#      - config
+#      - samba

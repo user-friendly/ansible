@@ -1,0 +1,12 @@
+---
+# Samba role variables.
+
+# Configuration directory.
+samba_config_path: /etc/samba
+
+# System configuration file.
+samba_config_file: /etc/samba/smb.conf
+
+# @fixme So yeah, comment this one out when the password play is set.
+# Default Samba password, very very bad.
+samba_pass: "1"
