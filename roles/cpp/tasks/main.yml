@@ -5,9 +5,9 @@
 
 - name: compilers
   apt: name={{ item }}
-       state={{ package_state }}
+       state=present
        install_recommends=no
-  with_itmes:
+  with_items:
     - binutils
     - gcc
     - g++
@@ -20,7 +20,7 @@
 
 - name: autotools
   apt: name={{ item }}
-       state={{ package_state }}
+       state=present
        install_recommends=no
   with_items:
     - make
@@ -34,7 +34,7 @@
 
 - name: support packages
   apt: name={{ item }}
-       state={{ package_state }}
+       state=present
        install_recommends=no
   with_items:
     - gdb

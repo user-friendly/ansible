@@ -1,14 +1,14 @@
 ---
-# Role installs nginx web server, light edition.
+# Role installs MySQL RDBMS.
 
-- name: nginx-light present
+- name: mysql present
   apt: name={{ item }}
        state=present
        install_recommends=no
   with_items:
-    - nginx
+    - mysql-server-5.5
   notify:
-    - nginx start
+    - mysql start
   tags:
     - packages
-    - nginx
+    - mysql

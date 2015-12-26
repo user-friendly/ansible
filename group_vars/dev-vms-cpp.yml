@@ -1,0 +1,10 @@
+---
+# Variables specific to dev slices.
+
+# Admin user, should have sudo access.
+admin_user: pivanov
+
+# Dev user, usually the admin user.
+dev_user: pivanov
+# @todo Change to www-data?
+dev_group: pivanov

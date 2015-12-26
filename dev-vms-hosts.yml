@@ -1,7 +1,7 @@
 ---
 # TODO Check these contribs: https://github.com/mivok/ansible-hosts, https://github.com/weareinteractive/ansible-hosts
 - name: adding dev VMs host entries to all hosts
-  hosts: ansible:dev-vms-web
+  hosts: ansible:dev-vms
   sudo: yes
   roles:
     - { role: hostname, when: apply_hostname }
@@ -18,6 +18,8 @@
       - { ip: '192.168.10.100', domain: 'dev-1.pivanov.vm' }
       - { ip: '192.168.10.101', domain: 'dev-2.pivanov.vm' }
       - { ip: '192.168.10.102', domain: 'dev-3.pivanov.vm' }
+      - { ip: '192.168.10.103', domain: 'dev-4.pivanov.vm' }
       - { ip: '192.168.10.100', domain: 'debian-sid.vbox.com' }
       - { ip: '192.168.10.101', domain: 'ubuntu-tahr.vbox.com' }
       - { ip: '192.168.10.102', domain: 'ubuntu-vervet.vbox.com' }
+      - { ip: '192.168.10.103', domain: 'debian-8.vbox.com' }
