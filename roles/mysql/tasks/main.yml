@@ -1,6 +1,13 @@
 ---
 # Role installs MySQL RDBMS.
 
+# Use a temporary password, which we'll remove later.
+- name: mysql debconf password
+  script: mysql-debconf.sh
+  tags:
+    - mysql-config
+    - mysql
+
 - name: mysql present
   apt: name={{ item }}
        state=present
@@ -12,3 +19,34 @@
   tags:
     - packages
     - mysql
+
+- name: mysql config file
+  template: src=mysql-5.5.conf.j2
+    dest={{ mysql_config_path }}/conf.d/mysql-5.5.conf
+  notify:
+    - mysql restart
+  tags:
+    - config
+    - mysql-config
+    - mysql
+
+- name: mysql clear root user
+  script: mysql-password.sh {{ mysql_root_password }}
+  notify:
+    - mysql restart
+  tags:
+    - mysql-user
+    - mysql-config
+    - mysql
+
+# @todo Just a test. Doesn't seem to be working, even though the python package
+#   (python-mysqldb) is installed.
+#- name: mysql add user
+#  mysql_user:
+#    name='tester'
+#    password=''
+#    host='localhost'
+#    state='present'
+#    priv="*.*:{{ mysql_app_user_privs }}"
+#  tags:
+#    - mysql-test

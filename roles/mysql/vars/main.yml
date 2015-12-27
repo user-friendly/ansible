@@ -1,0 +1,14 @@
+---
+# Mysql role variables.
+
+# Configuration directory.
+mysql_config_path: /etc/mysql
+
+# Assumed MySQL Client executable location.
+mysql_client_bin: /usr/bin/mysql
+
+# Default MySQL local root password.
+mysql_root_password: ''
+
+# Standard application user privileges.
+mysql_app_user_privs: "GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,INDEX,ALTER,CREATE TEMPORARY TABLES"

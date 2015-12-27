@@ -19,3 +19,5 @@
   tags:
     - common
     - apps
+
+# @todo Create logs directory in the {{ apps_path }} directory.

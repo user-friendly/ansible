@@ -1,5 +1,6 @@
 ---
 # Variables specific to dev slices.
+# @todo Use complex variables.
 
 # Admin user, should have sudo access.
 admin_user: pivanov
@@ -8,3 +9,6 @@ admin_user: pivanov
 dev_user: pivanov
 # @todo Change to www-data?
 dev_group: pivanov
+
+environment: dev
+environment_label: development

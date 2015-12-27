@@ -12,6 +12,7 @@
 #
   roles:
     - common
+    - services
     - samba
     - mysql
     - nginx

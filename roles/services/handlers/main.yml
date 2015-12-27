@@ -28,8 +28,8 @@
 
 # Start MySQL.
 - name: mysql start
-  service: name=mysqld state=started
+  service: name=mysql state=started
 
 # Restart MySQL.
 - name: mysql restart
-  service: name=mysqld state=restarted
+  service: name=mysql state=restarted
