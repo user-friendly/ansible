@@ -1,0 +1,47 @@
+---
+# Role installs the FastCGI Process Manager for PHP 5.
+
+- name: php5 fpm packages
+  apt: name={{ item }}
+       state=present
+       install_recommends=no
+  with_items:
+    - php5-fpm
+  notify:
+    - php5-fpm start
+  tags:
+    - packages
+    - php5-fpm
+
+- name: php5 config file
+  template: src=php-fpm.conf.j2
+    dest={{ php5_fpm_conf_path }}/php-fpm.conf
+    backup=yes
+  notify:
+    - php5-fpm restart
+  tags:
+    - php5-fpm-config-conf
+    - php5-fpm-config
+    - php5-fpm
+
+- name: php5 config ini file
+  template: src=php.ini.j2
+    dest={{ php5_fpm_conf_path }}/php.ini
+    backup=yes
+  notify:
+    - php5-fpm restart
+  tags:
+    - php5-fpm-config-ini
+    - php5-fpm-config
+    - php5-fpm
+
+- name: php5 config www file
+  template: src=www.conf.j2
+    dest={{ php5_fpm_conf_path }}/pool.d/www.conf
+    backup=yes
+  notify:
+    - php5-fpm restart
+  tags:
+    - php5-fpm-config-www
+    - php5-fpm-config
+    - php5-fpm

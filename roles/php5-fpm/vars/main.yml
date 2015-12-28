@@ -1,0 +1,5 @@
+---
+# PHP 5 FPM's role variables.
+
+# Path to PHP 5 FPM's configuration directory.
+php5_fpm_conf_path: /etc/php5/fpm

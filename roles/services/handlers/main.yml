@@ -33,3 +33,11 @@
 # Restart MySQL.
 - name: mysql restart
   service: name=mysql state=restarted
+
+# Start PHP 5 FPM.
+- name: php5-fpm start
+  service: name=php5-fpm state=started
+
+# Restart MySQL.
+- name: php5-fpm restart
+  service: name=php5-fpm state=restarted

@@ -10,5 +10,9 @@ dev_user: pivanov
 # @todo Change to www-data?
 dev_group: pivanov
 
-environment: dev
-environment_label: development
+# Web user and group. Usually used by web servers.
+web_user: www-data
+web_group: www-data
+
+env: dev
+env_label: development

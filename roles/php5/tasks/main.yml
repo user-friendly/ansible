@@ -1,0 +1,41 @@
+---
+# Role installs PHP 5.5.
+
+- name: php5 packages
+  apt: name={{ item }}
+       state=present
+       install_recommends=no
+  with_items:
+    # Prevents webserver (notably Apache) from being installed.
+    # We'll do that in a seperte role.
+    - php5-cli
+    - php5-common
+    - php5-mysql
+    - php5-gd
+    - php5-json
+    - php5-curl
+  tags:
+    - packages
+    - php5
+
+- name: php5 xdebug
+  apt: name={{ item }}
+       state=present
+       install_recommends=no
+  with_items:
+    - php5-xdebug
+  when: env == "dev"
+  tags:
+    - packages
+    - php5-xdebug
+    - php5
+
+- name: php5 xdebug configure
+  copy: src=xdebug.ini
+        dest={{ php5_conf_path }}/mods-available/xdebug.ini
+        backup=yes
+  when: env == "dev"
+  tags:
+    - php5-xdebug-config
+    - php5-xdebug
+    - php5
